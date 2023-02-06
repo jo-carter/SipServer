@@ -1,5 +1,6 @@
 #include <iostream>
 #include <csignal>
+#include <unistd.h>
 #include "SipServer.hpp"
 #include "cxxopts.hpp"
 
@@ -34,7 +35,9 @@ int main(int argc, char** argv)
 		SipServer server(std::move(ip), port);
 		std::cout << "Server has been started. Listening..." << std::endl;
 		signal(SIGINT, signalHandler);
-		while (exit_signaled != 1);
+		while (exit_signaled != 1){
+			usleep(1000);
+		}
 	}
 	catch (const cxxopts::OptionException&)
 	{
