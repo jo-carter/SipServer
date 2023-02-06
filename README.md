@@ -44,3 +44,8 @@ Using Visual Studio command prompt
 2. Create new sip accounts and set their domain to the sip server ip.
 3. Run the sip server.
 4. Register the accounts and make calls :)
+
+
+#Docker
+Docker image can be found here
+https://hub.docker.com/r/jordancarter123/sip-server
