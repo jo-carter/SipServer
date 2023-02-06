@@ -46,6 +46,6 @@ Using Visual Studio command prompt
 4. Register the accounts and make calls :)
 
 
-#Docker
+# Docker
 Docker image can be found here
 https://hub.docker.com/r/jordancarter123/sip-server
