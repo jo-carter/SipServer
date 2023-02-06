@@ -1,6 +1,14 @@
 #include <iostream>
+#include <csignal>
 #include "SipServer.hpp"
 #include "cxxopts.hpp"
+
+volatile int exit_signaled = 0;
+
+void signalHandler(int signum){
+	exit_signaled = 1;
+	exit(signum);
+}
 
 int main(int argc, char** argv)
 {
@@ -25,7 +33,8 @@ int main(int argc, char** argv)
 		int port = result["port"].as<int>();
 		SipServer server(std::move(ip), port);
 		std::cout << "Server has been started. Listening..." << std::endl;
-		getchar();
+		signal(SIGINT, signalHandler);
+		while (exit_signaled != 1);
 	}
 	catch (const cxxopts::OptionException&)
 	{
